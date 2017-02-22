@@ -1,0 +1,11 @@
+pipe3.c
+
+this creates the new process and
+In child  executes execl function and filedesctoptor[0] id copied to buffer and  it will send as  argument.
+In parent we write through pipe
+
+In pipe4.c
+
+This program is executed by pipe3.c by execuing exec and pipe I/P file descriptor is received as an argument
+and prints data in pipe
+

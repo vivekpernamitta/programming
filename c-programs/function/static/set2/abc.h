@@ -1,0 +1,3 @@
+
+
+ int (*typr)(int,int);

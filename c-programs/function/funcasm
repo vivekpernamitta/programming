@@ -1,0 +1,117 @@
+	.file	"function.c"
+	.comm	nuc,4,4
+	.globl	alpha
+	.data
+	.align 4
+	.type	alpha, @object
+	.size	alpha, 4
+alpha:
+	.long	12
+	.globl	beta
+	.type	beta, @object
+	.size	beta, 1
+beta:
+	.byte	13
+	.section	.rodata
+.LC0:
+	.string	" YOCTO !!!"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$16, %rsp
+	movl	$.LC0, %eax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf
+	movl	$45, -8(%rbp)
+	movl	$35, -4(%rbp)
+	leaq	-4(%rbp), %rdx
+	leaq	-8(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	fun
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.section	.rodata
+.LC1:
+	.string	"hi i am function"
+.LC2:
+	.string	"a=%d\nb=%d"
+.LC3:
+	.string	"enter and b values"
+.LC4:
+	.string	"%d%d"
+.LC5:
+	.string	" %s"
+.LC6:
+	.string	"%s"
+	.text
+	.globl	fun
+	.type	fun, @function
+fun:
+.LFB1:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$32, %rsp
+	movq	%rdi, -24(%rbp)
+	movq	%rsi, -32(%rbp)
+	movl	$.LC1, %eax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf
+	movq	-32(%rbp), %rax
+	movl	(%rax), %edx
+	movq	-24(%rbp), %rax
+	movl	(%rax), %ecx
+	movl	$.LC2, %eax
+	movl	%ecx, %esi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf
+	movl	$.LC3, %eax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf
+	movl	$.LC4, %eax
+	leaq	-32(%rbp), %rdx
+	leaq	-24(%rbp), %rcx
+	movq	%rcx, %rsi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf
+	movl	$.LC5, %eax
+	leaq	-8(%rbp), %rdx
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf
+	movq	-8(%rbp), %rdx
+	movl	$.LC6, %eax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE1:
+	.size	fun, .-fun
+	.ident	"GCC: (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3"
+	.section	.note.GNU-stack,"",@progbits
